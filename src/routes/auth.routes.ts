@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { AuthController } from '@/controllers';
-import { CreateUserDto, LoginDto, RefreshTokenDto } from '@/dtos';
+import { LoginDto, RefreshTokenDto } from '@/dtos';
 import { Routes } from '@/interfaces';
 import { ValidationMiddleware } from '@/middlewares/validation.middleware';
 import { wrapRequestHandler } from '@/utils/handles';

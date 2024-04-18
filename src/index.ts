@@ -6,7 +6,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 import { HOST_NAME, NODE_ENV } from './config';
-import { connectDB } from './constants/config';
+import { connectDB } from './config/config';
 import { API } from './constants/paths';
 import { defaultErrorHandler } from './middlewares/error.middlewares';
 import route from './routes';
@@ -17,7 +17,11 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-connectDB();
+connectDB()
+  .then(connect => {
+    logger.info(`Database connected: , ${connect.connection.host} ${connect.connection.name}`);
+  })
+  .catch(e => logger.error(e));
 
 app.use(cors());
 
